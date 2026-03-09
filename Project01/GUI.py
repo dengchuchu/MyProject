@@ -1,10 +1,16 @@
 # 本脚本运行方式为在终端运行命令：streamlit run D:\MyPython\Essay01\GUI.py
+import os
 import joblib
 import numpy as np
 import streamlit as st
 
-model = joblib.load('D:\MyPython\Essay01\ML model.joblib')
-ss = joblib.load('D:\MyPython\Essay01\StandardScaler.joblib')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_filename = "ML model.joblib"
+scaler_filename = "StandardScaler.joblib"
+model_path = os.path.join(current_dir, model_filename)
+scaler_path = os.path.join(current_dir, scaler_filename)
+model = joblib.load(model_path)
+ss = joblib.load(scaler_path)
 
 col1, col2, col3 = st.columns(3)
 
